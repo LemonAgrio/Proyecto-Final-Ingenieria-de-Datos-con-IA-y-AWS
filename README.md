@@ -23,9 +23,20 @@ El flujo de datos se diseñó bajo el marco de buena arquitectura de AWS (*AWS W
 
 1. **Capa de Ingesta (Raw Zone):** El archivo crudo original (`BTC-Daily.csv`) se deposita en la ruta de aterrizaje inicial dentro de un bucket de Amazon S3.
 
-<img width="1279" height="753" alt="image" src="https://github.com/user-attachments/assets/e4a31999-e116-4920-ad7e-990a2aafbe4c" />
+<img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/2f7b8afa-aaab-4f6d-8a72-6e9b4c950ccf" />
 
-3. **Capa de Catálogo:** Un AWS Glue Crawler escanea de forma automática la zona cruda para inferir el esquema y registrar los metadatos en el AWS Glue Data Catalog (`fintech_db`).
+2. **Capa de Catálogo:** Un AWS Glue Crawler escanea de forma automática la zona cruda para inferir el esquema y registrar los metadatos en el AWS Glue Data Catalog (`fintech_db`).
+
+<img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/fc372ee7-b3e6-490f-8d44-09825f8ae2b7" />
+
+<img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/174cace9-993b-417e-968e-ca0953be7433" />
+
+<img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/6663b966-b1cb-4408-b965-9b46863c0dab" />
+
+<img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/9ff1a7a4-a84a-40ef-bffd-9535b216a3e2" />
+
+<img width="1278" height="707" alt="image" src="https://github.com/user-attachments/assets/bfbefaaa-c40c-4cf3-8c5d-0135e24a51fa" />
+
 4. **Capa de Procesamiento (ETL):** Un AWS Glue Job ejecuta la lógica de negocio encargada del casteo explícito de tipos (forzando métricas financieras a `Double`), limpieza de nulos y renombrado de columnas con caracteres especiales, traduciendo las acciones visuales a un script nativo de PySpark.
 5. **Capa de Almacenamiento (Processed Zone):** Los datos transformados se escriben nuevamente en Amazon S3 comprimidos en formato columnar **Parquet (Snappy)**.
 6. **Capa de Consumo y Analítica:** Se utiliza un segundo Crawler para catalogar la capa optimizada y permitir que el equipo de negocio explote los datos mediante consultas estructuradas de alto rendimiento vía SQL en **Amazon Athena**.
