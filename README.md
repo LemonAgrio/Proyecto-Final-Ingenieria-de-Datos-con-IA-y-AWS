@@ -35,6 +35,8 @@ El flujo de datos se diseñó bajo el marco de buena arquitectura de AWS (*AWS W
 
 <img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/9ff1a7a4-a84a-40ef-bffd-9535b216a3e2" />
 
+<img width="1279" height="755" alt="image" src="https://github.com/user-attachments/assets/f76e04ea-5a6e-4a73-bd72-d73a5bed0646" />
+
 <img width="1278" height="707" alt="image" src="https://github.com/user-attachments/assets/bfbefaaa-c40c-4cf3-8c5d-0135e24a51fa" />
 
 4. **Capa de Procesamiento (ETL):** Un AWS Glue Job ejecuta la lógica de negocio encargada del casteo explícito de tipos (forzando métricas financieras a `Double`), limpieza de nulos y renombrado de columnas con caracteres especiales, traduciendo las acciones visuales a un script nativo de PySpark.
