@@ -23,7 +23,8 @@ El flujo de datos se diseñó bajo el marco de buena arquitectura de AWS (*AWS W
 
 1. **Capa de Ingesta (Raw Zone):** El archivo crudo original (`BTC-Daily.csv`) se deposita en la ruta de aterrizaje inicial dentro de un bucket de Amazon S3.
 
-<img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/2f7b8afa-aaab-4f6d-8a72-6e9b4c950ccf" />
+<img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/21859252-9f4b-42ed-8c72-0da089b7766d" />
+
 
 2. **Capa de Catálogo:** Un AWS Glue Crawler escanea de forma automática la zona cruda para inferir el esquema y registrar los metadatos en el AWS Glue Data Catalog (`fintech_db`).
 
@@ -35,13 +36,15 @@ El flujo de datos se diseñó bajo el marco de buena arquitectura de AWS (*AWS W
 
 <img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/9ff1a7a4-a84a-40ef-bffd-9535b216a3e2" />
 
-<img width="1279" height="755" alt="image" src="https://github.com/user-attachments/assets/f76e04ea-5a6e-4a73-bd72-d73a5bed0646" />
-
 <img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/3212aa4b-78e2-4725-8da2-a0760035e10b" />
+
+<img width="1278" height="799" alt="image" src="https://github.com/user-attachments/assets/61f2d3d0-f410-4d45-8c10-1ca8be325611" />
 
 <img width="1278" height="707" alt="image" src="https://github.com/user-attachments/assets/bfbefaaa-c40c-4cf3-8c5d-0135e24a51fa" />
 
-4. **Capa de Procesamiento (ETL):** Un AWS Glue Job ejecuta la lógica de negocio encargada del casteo explícito de tipos (forzando métricas financieras a `Double`), limpieza de nulos y renombrado de columnas con caracteres especiales, traduciendo las acciones visuales a un script nativo de PySpark.
+3. **Capa de Procesamiento (ETL):** Un AWS Glue Job ejecuta la lógica de negocio encargada del casteo explícito de tipos (forzando métricas financieras a `Double`), limpieza de nulos y renombrado de columnas con caracteres especiales, traduciendo las acciones visuales a un script nativo de PySpark.
+
+
 5. **Capa de Almacenamiento (Processed Zone):** Los datos transformados se escriben nuevamente en Amazon S3 comprimidos en formato columnar **Parquet (Snappy)**.
 6. **Capa de Consumo y Analítica:** Se utiliza un segundo Crawler para catalogar la capa optimizada y permitir que el equipo de negocio explote los datos mediante consultas estructuradas de alto rendimiento vía SQL en **Amazon Athena**.
 
