@@ -1,4 +1,4 @@
-<img width="1279" height="799" alt="image" src="https://github.com/user-attachments/assets/a1575797-e6a5-4fec-b606-d07b48462f20" /># 🚀 End-to-End AWS Data Pipeline: Data Lake Ingestion & Crypto Analytics
+# 🚀 End-to-End AWS Data Pipeline: Data Lake Ingestion & Crypto Analytics
 
 ![AWS](https://img.shields.io/badge/AWS-%23232F3E.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Apache Spark](https://img.shields.io/badge/Apache%20Spark-F15A24?style=for-the-badge&logo=apachespark&logoColor=white)
